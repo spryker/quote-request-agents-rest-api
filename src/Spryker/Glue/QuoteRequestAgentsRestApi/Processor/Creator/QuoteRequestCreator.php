@@ -23,12 +23,6 @@ class QuoteRequestCreator implements QuoteRequestCreatorInterface
      */
     protected const MAPPING_TYPE_UUID = 'uuid';
 
-    /**
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\Client\QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface $quoteRequestAgentClient
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\Client\QuoteRequestAgentsRestApiToCompanyUserStorageClientInterface $companyUserStorageClient
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\RestResource\QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface $quoteRequestsRestApiResource
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\RestResponseBuilder\QuoteRequestRestResponseBuilderInterface $quoteRequestRestResponseBuilder
-     */
     public function __construct(
         protected QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface $quoteRequestAgentClient,
         protected QuoteRequestAgentsRestApiToCompanyUserStorageClientInterface $companyUserStorageClient,
@@ -37,11 +31,6 @@ class QuoteRequestCreator implements QuoteRequestCreatorInterface
     ) {
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createQuoteRequest(RestRequestInterface $restRequest): RestResponseInterface
     {
         /** @var \Generated\Shared\Transfer\RestAgentQuoteRequestsRequestAttributesTransfer $quoteRequestAgentsRequestAttributesTransfer */

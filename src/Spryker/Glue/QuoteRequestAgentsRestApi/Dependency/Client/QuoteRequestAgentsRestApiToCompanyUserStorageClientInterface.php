@@ -11,11 +11,5 @@ use Generated\Shared\Transfer\CompanyUserStorageTransfer;
 
 interface QuoteRequestAgentsRestApiToCompanyUserStorageClientInterface
 {
-    /**
-     * @param string $mappingType
-     * @param string $identifier
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserStorageTransfer|null
-     */
     public function findCompanyUserByMapping(string $mappingType, string $identifier): ?CompanyUserStorageTransfer;
 }

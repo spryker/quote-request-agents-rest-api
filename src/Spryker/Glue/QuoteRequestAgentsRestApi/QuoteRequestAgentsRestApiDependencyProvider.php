@@ -33,11 +33,6 @@ class QuoteRequestAgentsRestApiDependencyProvider extends AbstractBundleDependen
      */
     public const CLIENT_COMPANY_USER_STORAGE = 'CLIENT_COMPANY_USER_STORAGE';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -48,11 +43,6 @@ class QuoteRequestAgentsRestApiDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addQuoteRequestsRestApiResource(Container $container): Container
     {
         $container->set(static::RESOURCE_QUOTE_REQUESTS_REST_API, function (Container $container) {
@@ -64,11 +54,6 @@ class QuoteRequestAgentsRestApiDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addQuoteRequestAgentClient(Container $container): Container
     {
         $container->set(static::CLIENT_QUOTE_REQUEST_AGENT, function (Container $container) {
@@ -78,11 +63,6 @@ class QuoteRequestAgentsRestApiDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addCompanyUserStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_COMPANY_USER_STORAGE, function (Container $container) {

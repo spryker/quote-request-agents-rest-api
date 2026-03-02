@@ -12,17 +12,7 @@ use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 
 interface QuoteRequestAgentReaderInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getQuoteRequestCollectionByFilter(RestRequestInterface $restRequest): RestResponseInterface;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function findQuoteRequest(RestRequestInterface $restRequest): RestResponseInterface;
 }

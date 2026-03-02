@@ -27,12 +27,6 @@ class QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceBridge implements Q
         $this->quoteRequestsRestApiResource = $quoteRequestsRestApiResource;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteRequestResponseTransfer $quoteRequestResponseTransfer
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createQuoteRequestRestResponse(
         QuoteRequestResponseTransfer $quoteRequestResponseTransfer,
         RestRequestInterface $restRequest
@@ -43,12 +37,6 @@ class QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceBridge implements Q
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteRequestCollectionTransfer $quoteRequestCollectionTransfer
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createQuoteRequestCollectionRestResponse(
         QuoteRequestCollectionTransfer $quoteRequestCollectionTransfer,
         RestRequestInterface $restRequest

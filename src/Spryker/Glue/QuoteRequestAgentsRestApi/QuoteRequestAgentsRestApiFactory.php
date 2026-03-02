@@ -35,9 +35,6 @@ use Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Validator\QuoteRequestValid
  */
 class QuoteRequestAgentsRestApiFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Creator\QuoteRequestCreatorInterface
-     */
     public function createQuoteRequestCreator(): QuoteRequestCreatorInterface
     {
         return new QuoteRequestCreator(
@@ -48,9 +45,6 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Updater\QuoteRequestUpdaterInterface
-     */
     public function createQuoteRequestUpdater(): QuoteRequestUpdaterInterface
     {
         return new QuoteRequestUpdater(
@@ -62,9 +56,6 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Reader\QuoteRequestAgentReaderInterface
-     */
     public function createQuoteRequestReader(): QuoteRequestAgentReaderInterface
     {
         return new QuoteRequestAgentReader(
@@ -74,9 +65,6 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\RestResponseBuilder\QuoteRequestRestResponseBuilderInterface
-     */
     public function createQuoteRequestRestResponseBuilder(): QuoteRequestRestResponseBuilderInterface
     {
         return new QuoteRequestRestResponseBuilder(
@@ -85,41 +73,26 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Mapper\QuoteRequestMapperInterface
-     */
     public function createQuoteRequestMapper(): QuoteRequestMapperInterface
     {
         return new QuoteRequestMapper();
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\RestResource\QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface
-     */
     public function getQuoteRequestsRestApiResource(): QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface
     {
         return $this->getProvidedDependency(QuoteRequestAgentsRestApiDependencyProvider::RESOURCE_QUOTE_REQUESTS_REST_API);
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\Client\QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface
-     */
     public function getQuoteRequestAgentClient(): QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface
     {
         return $this->getProvidedDependency(QuoteRequestAgentsRestApiDependencyProvider::CLIENT_QUOTE_REQUEST_AGENT);
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\Client\QuoteRequestAgentsRestApiToCompanyUserStorageClientInterface
-     */
     public function getCompanyUserStorageClient(): QuoteRequestAgentsRestApiToCompanyUserStorageClientInterface
     {
         return $this->getProvidedDependency(QuoteRequestAgentsRestApiDependencyProvider::CLIENT_COMPANY_USER_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Canceller\QuoteRequestCancellerInterface
-     */
     public function createQuoteRequestCanceller(): QuoteRequestCancellerInterface
     {
         return new QuoteRequestCanceller(
@@ -129,9 +102,6 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Reviser\QuoteRequestReviserInterface
-     */
     public function createQuoteRequestReviser(): QuoteRequestReviserInterface
     {
         return new QuoteRequestReviser(
@@ -141,9 +111,6 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Sender\QuoteRequestSenderInterface
-     */
     public function createQuoteRequestSender(): QuoteRequestSenderInterface
     {
         return new QuoteRequestSender(
@@ -153,9 +120,6 @@ class QuoteRequestAgentsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Validator\QuoteRequestValidatorInterface
-     */
     public function createQuoteRequestValidator(): QuoteRequestValidatorInterface
     {
         return new QuoteRequestValidator();

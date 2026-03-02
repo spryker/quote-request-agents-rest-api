@@ -17,21 +17,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilderInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\QuoteRequestAgentsRestApiConfig $quoteRequestAgentsRestApiConfig
-     */
     public function __construct(
         protected RestResourceBuilderInterface $restResourceBuilder,
         protected QuoteRequestAgentsRestApiConfig $quoteRequestAgentsRestApiConfig
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteRequestResponseTransfer $quoteRequestResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createFailedErrorResponse(QuoteRequestResponseTransfer $quoteRequestResponseTransfer): RestResponseInterface
     {
         $restResponse = $this->restResourceBuilder->createRestResponse();
@@ -47,9 +38,6 @@ class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilder
         return $restResponse;
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyUserNotFoundErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -61,12 +49,6 @@ class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilder
             ->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MessageTransfer $messageTransfer
-     * @param \Generated\Shared\Transfer\RestErrorMessageTransfer $restErrorMessageTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestErrorMessageTransfer
-     */
     protected function mapMessageToRestErrorMessage(
         MessageTransfer $messageTransfer,
         RestErrorMessageTransfer $restErrorMessageTransfer
@@ -84,11 +66,6 @@ class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilder
         return $this->createErrorMessageTransfer($messageTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MessageTransfer $messageTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestErrorMessageTransfer
-     */
     protected function createErrorMessageTransfer(MessageTransfer $messageTransfer): RestErrorMessageTransfer
     {
         return (new RestErrorMessageTransfer())
@@ -97,9 +74,6 @@ class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilder
             ->setDetail($messageTransfer->getMessage() ?? QuoteRequestAgentsRestApiConfig::RESPONSE_DETAILS_PROBLEM_CREATING_REQUEST_FOR_QUOTE_BY_AGENT);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createQuoteRequestNotFoundErrorResponse(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())
@@ -112,9 +86,6 @@ class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilder
             ->addError($restErrorTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createQuoteRequestReferenceMissingErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -127,9 +98,6 @@ class QuoteRequestRestResponseBuilder implements QuoteRequestRestResponseBuilder
             ->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createDeliveryDateIsNotValidErrorResponse(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())

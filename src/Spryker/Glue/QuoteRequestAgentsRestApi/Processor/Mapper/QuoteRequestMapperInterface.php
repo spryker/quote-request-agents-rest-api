@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\RestAgentQuoteRequestsRequestAttributesTransfer;
 
 interface QuoteRequestMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\RestAgentQuoteRequestsRequestAttributesTransfer $restAgentQuoteRequestsRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\QuoteRequestTransfer $quoteRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteRequestTransfer
-     */
     public function mapRestAgentQuoteRequestsRequestAttributesTransferToQuoteRequestTransfer(
         RestAgentQuoteRequestsRequestAttributesTransfer $restAgentQuoteRequestsRequestAttributesTransfer,
         QuoteRequestTransfer $quoteRequestTransfer

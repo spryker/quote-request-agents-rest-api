@@ -24,12 +24,6 @@ class QuoteRequestAgentsRestApiToCompanyUserStorageClientBridge implements Quote
         $this->companyUserStorageClient = $companyUserStorageClient;
     }
 
-    /**
-     * @param string $mappingType
-     * @param string $identifier
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserStorageTransfer|null
-     */
     public function findCompanyUserByMapping(string $mappingType, string $identifier): ?CompanyUserStorageTransfer
     {
         return $this->companyUserStorageClient->findCompanyUserByMapping($mappingType, $identifier);

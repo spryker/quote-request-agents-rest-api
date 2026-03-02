@@ -20,12 +20,6 @@ class QuoteRequestMapper implements QuoteRequestMapperInterface
      */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
-    /**
-     * @param \Generated\Shared\Transfer\RestAgentQuoteRequestsRequestAttributesTransfer $restAgentQuoteRequestsRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\QuoteRequestTransfer $quoteRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteRequestTransfer
-     */
     public function mapRestAgentQuoteRequestsRequestAttributesTransferToQuoteRequestTransfer(
         RestAgentQuoteRequestsRequestAttributesTransfer $restAgentQuoteRequestsRequestAttributesTransfer,
         QuoteRequestTransfer $quoteRequestTransfer
@@ -44,12 +38,6 @@ class QuoteRequestMapper implements QuoteRequestMapperInterface
             ->setLatestVersion($quoteRequestVersionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestAgentQuoteRequestsRequestAttributesTransfer $restAgentQuoteRequestsRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\QuoteRequestVersionTransfer $quoteRequestVersionTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteRequestVersionTransfer
-     */
     protected function mapUnitPricesToQuoteItems(
         RestAgentQuoteRequestsRequestAttributesTransfer $restAgentQuoteRequestsRequestAttributesTransfer,
         QuoteRequestVersionTransfer $quoteRequestVersionTransfer

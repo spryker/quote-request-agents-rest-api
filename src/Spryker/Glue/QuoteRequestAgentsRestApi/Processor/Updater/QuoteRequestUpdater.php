@@ -19,13 +19,6 @@ use Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Validator\QuoteRequestValid
 
 class QuoteRequestUpdater implements QuoteRequestUpdaterInterface
 {
-    /**
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\Client\QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface $quoteRequestAgentClient
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\RestResource\QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface $quoteRequestsRestApiResource
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\RestResponseBuilder\QuoteRequestRestResponseBuilderInterface $quoteRequestRestResponseBuilder
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Mapper\QuoteRequestMapperInterface $quoteRequestMapper
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\Validator\QuoteRequestValidatorInterface $quoteRequestValidator
-     */
     public function __construct(
         protected QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface $quoteRequestAgentClient,
         protected QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface $quoteRequestsRestApiResource,
@@ -35,11 +28,6 @@ class QuoteRequestUpdater implements QuoteRequestUpdaterInterface
     ) {
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function update(RestRequestInterface $restRequest): RestResponseInterface
     {
         $quoteRequestTransfer = $this->getQuoteRequest($restRequest);
@@ -70,11 +58,6 @@ class QuoteRequestUpdater implements QuoteRequestUpdaterInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Generated\Shared\Transfer\QuoteRequestTransfer|null
-     */
     protected function getQuoteRequest(RestRequestInterface $restRequest): ?QuoteRequestTransfer
     {
         $quoteRequestFilterTransfer = (new QuoteRequestFilterTransfer())

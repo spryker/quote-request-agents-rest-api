@@ -18,11 +18,6 @@ use Spryker\Glue\QuoteRequestAgentsRestApi\Processor\RestResponseBuilder\QuoteRe
 
 class QuoteRequestAgentReader implements QuoteRequestAgentReaderInterface
 {
-    /**
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\Client\QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface $quoteRequestAgentClient
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Dependency\RestResource\QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface $quoteRequestsRestApiResource
-     * @param \Spryker\Glue\QuoteRequestAgentsRestApi\Processor\RestResponseBuilder\QuoteRequestRestResponseBuilderInterface $quoteRequestRestResponseBuilder
-     */
     public function __construct(
         protected QuoteRequestAgentsRestApiToQuoteRequestAgentClientInterface $quoteRequestAgentClient,
         protected QuoteRequestAgentsRestApiToQuoteRequestsRestApiResourceInterface $quoteRequestsRestApiResource,
@@ -30,11 +25,6 @@ class QuoteRequestAgentReader implements QuoteRequestAgentReaderInterface
     ) {
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function findQuoteRequest(RestRequestInterface $restRequest): RestResponseInterface
     {
         $quoteRequestFilterTransfer = (new QuoteRequestFilterTransfer())
@@ -53,11 +43,6 @@ class QuoteRequestAgentReader implements QuoteRequestAgentReaderInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getQuoteRequestCollectionByFilter(RestRequestInterface $restRequest): RestResponseInterface
     {
         $quoteRequestFilterTransfer = (new QuoteRequestFilterTransfer())->setWithVersions(true);
