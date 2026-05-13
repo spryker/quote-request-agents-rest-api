@@ -1,0 +1,54 @@
+resource:
+    name: AgentQuoteRequestRevise
+    shortName: agent-quote-request-revise
+    description: 'Revise a quote request as an agent'
+
+    processor: Spryker\Glue\QuoteRequestAgentsRestApi\Api\Storefront\Processor\AgentQuoteRequestReviseStorefrontProcessor
+
+    paginationEnabled: false
+
+    security: "is_granted('ROLE_AGENT')"
+
+    operations:
+        - type: Post
+          description: 'Revise a quote request'
+          uriTemplate: '/agent-quote-requests/{quoteRequestReference}/agent-quote-request-revise'
+          uriVariables:
+              quoteRequestReference:
+                  toProperty: 'quoteRequest'
+                  fromClass: AgentQuoteRequestsStorefrontResource
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Quote request reverted to in-progress for revision.'
+                  401:
+                      description: 'Missing or invalid agent access token.'
+                  404:
+                      description: 'Quote request not found (code 4501).'
+                  422:
+                      description: 'Quote request status does not allow revision (code 4504).'
+
+    properties:
+        quoteRequestReference:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            description: 'Reference of the revised quote request'
+            openapiContext:
+                example: 'DE--21-123'
+
+        status:
+            type: string
+            writable: false
+            readable: true
+            description: 'Status after revision'
+            openapiContext:
+                example: 'in-progress'
+
+        quoteRequest:
+            type: AgentQuoteRequestsStorefrontResource
+            writable: false
+            readable: false
+            required: false
+            description: 'The parent quote request'

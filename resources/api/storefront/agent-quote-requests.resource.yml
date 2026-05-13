@@ -1,0 +1,173 @@
+resource:
+    name: AgentQuoteRequests
+    shortName: agent-quote-requests
+    description: 'Quote request management for sales agents'
+
+    provider: Spryker\Glue\QuoteRequestAgentsRestApi\Api\Storefront\Provider\AgentQuoteRequestsStorefrontProvider
+    processor: Spryker\Glue\QuoteRequestAgentsRestApi\Api\Storefront\Processor\AgentQuoteRequestsStorefrontProcessor
+
+    paginationEnabled: true
+
+    security: "is_granted('ROLE_AGENT')"
+
+    operations:
+        - type: GetCollection
+          description: 'Retrieve all quote requests'
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Collection of quote requests visible to the agent.'
+                  401:
+                      description: 'Missing or invalid agent access token.'
+
+        - type: Get
+          description: 'Retrieve a specific quote request by reference'
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Quote request returned.'
+                  401:
+                      description: 'Missing or invalid agent access token.'
+                  404:
+                      description: 'Quote request not found (code 4501).'
+
+        - type: Post
+          description: 'Create a new quote request on behalf of a company user'
+          openapiContext:
+              responses:
+                  201:
+                      description: 'Quote request created.'
+                  401:
+                      description: 'Missing or invalid agent access token.'
+                  404:
+                      description: 'Company user not found (code 1404).'
+                  422:
+                      description: 'Validation failure — invalid delivery date (code 4506) or empty cart (code 4503).'
+
+        - type: Patch
+          description: 'Update an existing quote request'
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Quote request updated.'
+                  401:
+                      description: 'Missing or invalid agent access token.'
+                  404:
+                      description: 'Quote request not found (code 4501).'
+                  422:
+                      description: 'Wrong status (code 4504), concurrent edit (code 4505) or validation failure (code 4506).'
+
+    properties:
+        quoteRequestReference:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            description: 'Unique quote request reference'
+            openapiContext:
+                example: 'DE--21-123'
+
+        status:
+            type: string
+            writable: false
+            readable: true
+            description: 'Current status of the quote request'
+            openapiContext:
+                example: 'in-progress'
+
+        isLatestVersionVisible:
+            type: boolean
+            writable: true
+            readable: true
+            required: false
+            description: 'Whether the latest version is visible to the customer'
+            openapiContext:
+                example: true
+
+        createdAt:
+            type: string
+            writable: false
+            readable: true
+            description: 'Creation timestamp'
+            openapiContext:
+                example: '2025-01-01T10:00:00+00:00'
+
+        validUntil:
+            type: string
+            writable: true
+            readable: true
+            required: false
+            description: 'Expiration timestamp'
+            openapiContext:
+                example: '2025-02-01T23:59:59+00:00'
+
+        versions:
+            type: array
+            writable: false
+            readable: true
+            description: 'List of version references'
+            openapiContext:
+                example: ['DE--21-123-1', 'DE--21-123-2']
+
+        shownVersion:
+            type: array
+            writable: false
+            readable: true
+            description: 'Currently shown version with cart, metadata, and totals'
+            openapiContext:
+                example:
+                    version: 1
+                    versionReference: 'DE--21-123-1'
+                    cart:
+                        items:
+                            - sku: '001_25904006'
+                              quantity: 2
+                              unitPrice: 3500
+                    metadata:
+                        delivery_date: '2025-03-01'
+                        note: 'Please deliver before noon'
+                    totals:
+                        subtotal: 7000
+                        grandTotal: 8330
+
+        customer:
+            type: array
+            writable: false
+            readable: true
+            description: 'Customer and company user information'
+            openapiContext:
+                example:
+                    firstName: 'John'
+                    lastName: 'Doe'
+                    email: 'john.doe@example.com'
+                    companyUserReference: 'DE--1'
+
+        companyUserUuid:
+            type: string
+            writable: true
+            readable: false
+            required: false
+            description: 'Company user UUID to create quote request on behalf of'
+            openapiContext:
+                example: '1ce91011-8d60-59ef-9fe0-4493ef36c4f0'
+
+        metadata:
+            type: array
+            writable: true
+            readable: false
+            required: false
+            description: 'Metadata including delivery date and note'
+            openapiContext:
+                example:
+                    delivery_date: '2025-03-01'
+                    note: 'Urgent delivery requested'
+
+        unitPriceMap:
+            type: array
+            writable: true
+            readable: false
+            required: false
+            description: 'Map of groupKey to unit price for custom pricing'
+            openapiContext:
+                example:
+                    '001_25904006_offer1': 3500

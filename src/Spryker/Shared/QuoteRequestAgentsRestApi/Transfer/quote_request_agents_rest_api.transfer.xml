@@ -17,6 +17,8 @@
     <transfer name="CompanyUser">
         <property name="idCompanyUser" type="int"/>
         <property name="customer" type="Customer" description="A data object representing a customer."/>
+        <property name="fkCompany" type="int"/>
+        <property name="fkCompanyBusinessUnit" type="int"/>
     </transfer>
 
     <transfer name="RestAgentQuoteRequestsRequestAttributes" strict="true">
@@ -38,6 +40,10 @@
 
     <transfer name="Customer">
         <property name="customerReference" type="string" description="A unique reference for a customer."/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="idCustomer" type="int"/>
+        <property name="email" type="string"/>
     </transfer>
 
     <transfer name="Message">
@@ -48,6 +54,8 @@
     <transfer name="QuoteRequestVersion">
         <property name="quote" type="Quote" description="A data object representing a shopping cart before it becomes an order."/>
         <property name="metadata" type="array" singular="metadata" description="A collection of metadata."/>
+        <property name="version" type="int"/>
+        <property name="versionReference" type="string"/>
     </transfer>
 
     <transfer name="Quote">
@@ -56,6 +64,9 @@
         <property name="customer" type="Customer" description="A data object representing a customer."/>
         <property name="items" type="Item[]" singular="item" description="A collection of items, typically in a cart, order, or list."/>
         <property name="priceMode" type="string" description="The mode for price calculation, typically &quot;GROSS_MODE&quot; or &quot;NET_MODE&quot;."/>
+        <property name="currency" type="Currency"/>
+        <property name="store" type="Store"/>
+        <property name="totals" type="Totals"/>
     </transfer>
 
     <transfer name="RestErrorMessage">
@@ -67,6 +78,10 @@
     <transfer name="QuoteRequest">
         <property name="companyUser" type="CompanyUser" description="A user associated with a company."/>
         <property name="latestVersion" type="QuoteRequestVersion" description="The latest version of a quote request."/>
+        <property name="quoteRequestReference" type="string"/>
+        <property name="status" type="string"/>
+        <property name="isLatestVersionVisible" type="bool"/>
+        <property name="validUntil" type="string"/>
     </transfer>
 
     <transfer name="Pagination">
@@ -75,6 +90,7 @@
     </transfer>
 
     <transfer name="CompanyUserStorage">
+        <property name="idCompanyUser" type="int"/>
     </transfer>
 
     <transfer name="QuoteRequestFilter">
@@ -90,6 +106,7 @@
     </transfer>
 
     <transfer name="QuoteRequestCollection">
+        <property name="quoteRequests" type="QuoteRequest[]" singular="quoteRequest"/>
     </transfer>
 
     <transfer name="QuoteError">
@@ -100,9 +117,37 @@
         <property name="groupKey" type="string" description="A key used to group items together, typically in a cart or order."/>
         <property name="sourceUnitGrossPrice" type="int" description="The original gross price of a single unit."/>
         <property name="sourceUnitNetPrice" type="int" description="The original net price of a single unit."/>
+        <property name="sku" type="string"/>
+        <property name="abstractSku" type="string"/>
+        <property name="quantity" type="int"/>
+        <property name="unitPrice" type="int"/>
+        <property name="sumPrice" type="int"/>
+        <property name="unitGrossPrice" type="int"/>
+        <property name="sumGrossPrice" type="int"/>
     </transfer>
 
     <transfer name="RestQuoteRequestsAttributes">
+    </transfer>
+
+    <transfer name="Currency">
+        <property name="code" type="string"/>
+    </transfer>
+
+    <transfer name="Store">
+        <property name="name" type="string"/>
+    </transfer>
+
+    <transfer name="Totals">
+        <property name="subtotal" type="int"/>
+        <property name="grandTotal" type="int"/>
+        <property name="discountTotal" type="int"/>
+        <property name="expenseTotal" type="int"/>
+        <property name="priceToPay" type="int"/>
+        <property name="taxTotal" type="TaxTotal"/>
+    </transfer>
+
+    <transfer name="TaxTotal">
+        <property name="amount" type="int" description="A numerical value, often used for price, quantity, or discount."/>
     </transfer>
 
 </transfers>

@@ -1,0 +1,54 @@
+resource:
+    name: AgentQuoteRequestCancel
+    shortName: agent-quote-request-cancel
+    description: 'Cancel a quote request as an agent'
+
+    processor: Spryker\Glue\QuoteRequestAgentsRestApi\Api\Storefront\Processor\AgentQuoteRequestCancelStorefrontProcessor
+
+    paginationEnabled: false
+
+    security: "is_granted('ROLE_AGENT')"
+
+    operations:
+        - type: Post
+          description: 'Cancel a quote request'
+          uriTemplate: '/agent-quote-requests/{quoteRequestReference}/agent-quote-request-cancel'
+          uriVariables:
+              quoteRequestReference:
+                  toProperty: 'quoteRequest'
+                  fromClass: AgentQuoteRequestsStorefrontResource
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Quote request cancelled.'
+                  401:
+                      description: 'Missing or invalid agent access token.'
+                  404:
+                      description: 'Quote request not found (code 4501).'
+                  422:
+                      description: 'Quote request status does not allow cancellation (code 4504).'
+
+    properties:
+        quoteRequestReference:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            description: 'Reference of the cancelled quote request'
+            openapiContext:
+                example: 'DE--21-123'
+
+        status:
+            type: string
+            writable: false
+            readable: true
+            description: 'Status after cancellation'
+            openapiContext:
+                example: 'cancelled'
+
+        quoteRequest:
+            type: AgentQuoteRequestsStorefrontResource
+            writable: false
+            readable: false
+            required: false
+            description: 'The parent quote request'
