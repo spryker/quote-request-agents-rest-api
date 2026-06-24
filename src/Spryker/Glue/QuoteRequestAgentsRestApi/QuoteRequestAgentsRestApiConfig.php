@@ -14,21 +14,29 @@ use Symfony\Component\HttpFoundation\Response;
 class QuoteRequestAgentsRestApiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_AGENT_QUOTE_REQUESTS = 'agent-quote-requests';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_AGENT_QUOTE_REQUEST_CANCEL = 'agent-quote-request-cancel';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_AGENT_QUOTE_REQUEST_REVISE = 'agent-quote-request-revise';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_AGENT_QUOTE_REQUEST_SEND_TO_CUSTOMER = 'agent-quote-request-send-to-customer';
@@ -48,61 +56,85 @@ class QuoteRequestAgentsRestApiConfig extends AbstractBundleConfig
     protected const GLOSSARY_KEY_QUOTE_REQUEST_WRONG_STATUS = 'quote_request.validation.error.wrong_status';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_COMPANY_USER_NOT_FOUND = '1404';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_COMPANY_USER_NOT_FOUND = 'Company user not found';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_PROBLEM_CREATING_REQUEST_FOR_QUOTE_BY_AGENT = '4507';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAILS_PROBLEM_CREATING_REQUEST_FOR_QUOTE_BY_AGENT = 'There was a problem adding the quote request for agent.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_QUOTE_REQUEST_NOT_FOUND = '4501';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_QUOTE_REQUEST_NOT_FOUND = 'Quote request not found.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_QUOTE_REQUEST_REFERENCE_MISSING = '4502';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_QUOTE_REQUEST_REFERENCE_MISSING = 'Quote request reference is required.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_QUOTE_REQUEST_WRONG_STATUS = '4504';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_QUOTE_REQUEST_WRONG_STATUS = 'Wrong Quote Request status for this operation.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_METADATA_DELIVERY_DATE_IS_INVALID = '4506';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAILS_METADATA_DELIVERY_DATE_IS_INVALID = 'The date should be greater than the current date.';
