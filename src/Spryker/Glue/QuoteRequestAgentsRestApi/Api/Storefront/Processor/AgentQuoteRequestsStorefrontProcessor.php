@@ -118,8 +118,8 @@ class AgentQuoteRequestsStorefrontProcessor extends AbstractAgentQuoteRequestSto
     ): QuoteRequestTransfer {
         $quoteRequestVersionTransfer = $quoteRequestTransfer->getLatestVersion() ?? new QuoteRequestVersionTransfer();
 
-        if (!empty($resource->metadata)) {
-            $quoteRequestVersionTransfer->setMetadata($resource->metadata);
+        if ($resource->metadata !== null) {
+            $quoteRequestVersionTransfer->setMetadata($resource->metadata->toArray());
         }
 
         $quoteRequestTransfer->setLatestVersion($quoteRequestVersionTransfer);
