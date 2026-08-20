@@ -19,14 +19,14 @@ resource:
                   fromClass: AgentQuoteRequestsStorefrontResource
           openapiContext:
               responses:
-                  200:
+                  201:
                       description: 'Quote request cancelled.'
                   401:
-                      description: 'Missing or invalid agent access token.'
-                  404:
-                      description: 'Quote request not found (code 4501).'
+                      description: 'Invalid agent access token.'
+                  403:
+                      description: 'No agent access token supplied.'
                   422:
-                      description: 'Quote request status does not allow cancellation (code 4504).'
+                      description: 'Quote request status does not allow cancellation (code 4504), or the reference does not resolve to a quote request (code 4507).'
 
     properties:
         quoteRequestReference:

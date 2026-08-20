@@ -1,4 +1,3 @@
-agent-quote-requests:
-    post:
-        companyUserUuid:
-            - NotBlank
+post:
+    companyUserUuid:
+        - NotBlank: { allowNull: true }

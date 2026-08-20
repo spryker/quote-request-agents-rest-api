@@ -18,7 +18,9 @@ resource:
                   200:
                       description: 'Collection of quote requests visible to the agent.'
                   401:
-                      description: 'Missing or invalid agent access token.'
+                      description: 'Invalid agent access token.'
+                  403:
+                      description: 'No agent access token supplied.'
 
         - type: Get
           description: 'Retrieve a specific quote request by reference'
@@ -27,7 +29,9 @@ resource:
                   200:
                       description: 'Quote request returned.'
                   401:
-                      description: 'Missing or invalid agent access token.'
+                      description: 'Invalid agent access token.'
+                  403:
+                      description: 'No agent access token supplied.'
                   404:
                       description: 'Quote request not found (code 4501).'
 
@@ -38,7 +42,9 @@ resource:
                   201:
                       description: 'Quote request created.'
                   401:
-                      description: 'Missing or invalid agent access token.'
+                      description: 'Invalid agent access token.'
+                  403:
+                      description: 'No agent access token supplied.'
                   404:
                       description: 'Company user not found (code 1404).'
                   422:
@@ -51,7 +57,9 @@ resource:
                   200:
                       description: 'Quote request updated.'
                   401:
-                      description: 'Missing or invalid agent access token.'
+                      description: 'Invalid agent access token.'
+                  403:
+                      description: 'No agent access token supplied.'
                   404:
                       description: 'Quote request not found (code 4501).'
                   422:
