@@ -74,9 +74,24 @@ class AgentQuoteRequestsStorefrontProcessor extends AbstractAgentQuoteRequestSto
         $this->assertSuccessful($quoteRequestResponseTransfer);
 
         return $this->agentQuoteRequestResourceMapper->denormalizeAgentQuoteRequestResource(
-            $quoteRequestResponseTransfer->getQuoteRequestOrFail(),
+            $this->readCreatedQuoteRequest($quoteRequestResponseTransfer->getQuoteRequestOrFail()),
             AgentQuoteRequestsStorefrontResource::class,
         );
+    }
+
+    /**
+     * The create echoes back the transfer it was handed, whose company user carries nothing but the
+     * id the request named - so the created response would answer `customer` as null where the item
+     * read answers it in full. Reading the created resource back makes the create answer the same
+     * shape a subsequent GET does, which is what the schema declares for both.
+     */
+    protected function readCreatedQuoteRequest(QuoteRequestTransfer $quoteRequestTransfer): QuoteRequestTransfer
+    {
+        $quoteRequestFilterTransfer = (new QuoteRequestFilterTransfer())
+            ->setQuoteRequestReference($quoteRequestTransfer->getQuoteRequestReferenceOrFail())
+            ->setWithVersions(true);
+
+        return $this->quoteRequestAgentClient->findQuoteRequest($quoteRequestFilterTransfer) ?? $quoteRequestTransfer;
     }
 
     /**

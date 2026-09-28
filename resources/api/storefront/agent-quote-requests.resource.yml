@@ -236,7 +236,8 @@ resource:
                                 example: 'Please deliver before noon'
                 totals:
                     type: object
-                    description: 'Calculated totals for this version.'
+                    responseOptional: true
+                    description: "Calculated totals for this version. Populated only where the version carries totals of its own; the agent mapper exposes the cart snapshot's under cart.totals."
                     properties:
                         subtotal:
                             type: integer
@@ -273,7 +274,8 @@ resource:
                         example: 'john.doe@example.com'
                 companyUserReference:
                     type: string
-                    description: 'Company user reference.'
+                    responseOptional: true
+                    description: 'Company user reference. Populated only where the company user carries a public reference; the agent quote-request mapper resolves none today.'
                     openapiContext:
                         example: 'DE--1'
 
