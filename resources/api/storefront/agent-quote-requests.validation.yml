@@ -1,3 +1,40 @@
 post:
     companyUserUuid:
         - NotBlank: { allowNull: true }
+    validUntil:
+        - Optional:
+              constraints:
+                  # ISO-8601 and SQL date-time forms, with or without fraction or offset, and a bare date.
+                  - AtLeastOneOf:
+                        message: 'This value is not a valid datetime.'
+                        includeInternalMessages: false
+                        constraints:
+                            - DateTime: { format: 'Y-m-d H:i:s' }
+                            - DateTime: { format: 'Y-m-d H:i:s.u' }
+                            - DateTime: { format: 'Y-m-d\TH:i:sP' }
+                            - DateTime: { format: 'Y-m-d\TH:i:s.uP' }
+                            - DateTime: { format: 'Y-m-d\TH:i:s' }
+                            - DateTime: { format: 'Y-m-d' }
+
+patch:
+    validUntil:
+        - Optional:
+              constraints:
+                  - AtLeastOneOf:
+                        message: 'This value is not a valid datetime.'
+                        includeInternalMessages: false
+                        constraints:
+                            - DateTime: { format: 'Y-m-d H:i:s' }
+                            - DateTime: { format: 'Y-m-d H:i:s.u' }
+                            - DateTime: { format: 'Y-m-d\TH:i:sP' }
+                            - DateTime: { format: 'Y-m-d\TH:i:s.uP' }
+                            - DateTime: { format: 'Y-m-d\TH:i:s' }
+                            - DateTime: { format: 'Y-m-d' }
+    unitPriceMap:
+        - Optional:
+              constraints:
+                  - All:
+                        constraints:
+                            - Type:
+                                  type: numeric
+                            - PositiveOrZero: ~
