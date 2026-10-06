@@ -105,9 +105,10 @@ resource:
         isLatestVersionVisible:
             type: boolean
             writable: true
+            writableOn: ['Patch']
             readable: true
             required: false
-            description: 'Whether the latest version is visible to the customer'
+            description: 'Whether the latest version is visible to the customer. Read on PATCH only; a quote request created by POST always starts hidden.'
             openapiContext:
                 example: true
 
@@ -301,9 +302,10 @@ resource:
         companyUserUuid:
             type: string
             writable: true
+            writableOn: ['Post']
             readable: false
             required: false
-            description: 'Company user UUID to create quote request on behalf of'
+            description: 'Company user UUID to create quote request on behalf of. Read on POST only; a PATCH keeps the company user of the quote request.'
             openapiContext:
                 example: '1ce91011-8d60-59ef-9fe0-4493ef36c4f0'
 
@@ -311,9 +313,10 @@ resource:
             type: object
             objectName: QuoteRequestMetadata
             writable: true
+            writableOn: ['Patch']
             readable: false
             required: false
-            description: 'Metadata including delivery date and note'
+            description: 'Metadata including delivery date and note. Stored on PATCH only; a quote request created by POST starts with an empty version.'
             properties:
                 delivery_date:
                     type: string
@@ -329,9 +332,10 @@ resource:
         unitPriceMap:
             type: array
             writable: true
+            writableOn: ['Patch']
             readable: false
             required: false
-            description: 'Map of groupKey to unit price for custom pricing'
+            description: 'Map of groupKey to unit price for custom pricing. Read on PATCH only: a quote request created by POST has no items yet for it to price.'
             openapiContext:
                 example:
                     '001_25904006_offer1': 3500
