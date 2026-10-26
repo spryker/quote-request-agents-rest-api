@@ -82,6 +82,7 @@
         <property name="status" type="string"/>
         <property name="isLatestVersionVisible" type="bool"/>
         <property name="validUntil" type="string"/>
+        <property name="quoteRequestVersions" type="QuoteRequestVersion[]" singular="quoteRequestVersion"/>
     </transfer>
 
     <transfer name="Pagination">
