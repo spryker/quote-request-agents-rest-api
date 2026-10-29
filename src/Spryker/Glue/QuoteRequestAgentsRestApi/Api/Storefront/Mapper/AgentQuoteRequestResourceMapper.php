@@ -151,13 +151,13 @@ class AgentQuoteRequestResourceMapper
             return null;
         }
 
-        $taxTotal = $totalsTransfer->getTaxTotal()?->getAmount();
+        $taxTotalTransfer = $totalsTransfer->getTaxTotal();
 
         return [
             'subtotal' => $totalsTransfer->getSubtotal(),
             'grandTotal' => $totalsTransfer->getGrandTotal(),
             'discountTotal' => $totalsTransfer->getDiscountTotal(),
-            'taxTotal' => $taxTotal,
+            'taxTotal' => $taxTotalTransfer?->toArray(true, false),
             'expenseTotal' => $totalsTransfer->getExpenseTotal(),
             'priceToPay' => $totalsTransfer->getPriceToPay(),
         ];

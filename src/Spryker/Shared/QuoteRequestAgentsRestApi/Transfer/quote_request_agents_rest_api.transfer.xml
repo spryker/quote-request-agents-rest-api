@@ -149,6 +149,7 @@
 
     <transfer name="TaxTotal">
         <property name="amount" type="int" description="A numerical value, often used for price, quantity, or discount."/>
+        <property name="taxRate" type="float"/>
     </transfer>
 
 </transfers>
